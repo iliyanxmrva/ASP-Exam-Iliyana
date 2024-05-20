@@ -1,0 +1,21 @@
+﻿@model Cake
+
+@{
+    ViewData["Title"] = "Cakes";
+}
+
+<div class="row g-0 bg-body-secondary position-relative">
+    <div class="col-md-6 mb-md-0 p-md-4">
+        <img src="~/images/cakes/@Model.ImageUrl" class="w-100" alt="...">
+    </div>
+    <div class="col-md-6 p-4 ps-md-0">
+        <h3>@Model.Name</h3>
+        <p>@Model.Description</p>
+        <div class="d-flex flex-row justify-content-evenly">
+            <h5>Filling: @Model.Filling</h5>
+            <h5>Price: @Model.Price lv</h5>
+            <br />
+        </div>
+        <a asp-controller="Orders" asp-action="Index" asp-route-id="@Model.Id"><button type="button" class="btn btn-success">Order</button></a>
+    </div>
+</div>

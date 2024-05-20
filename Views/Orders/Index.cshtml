@@ -1,0 +1,23 @@
+﻿@model List<Order>
+
+<table class="table">
+    <thead class="table-light">
+        <th>N</th>
+        <th>Cake</th>
+        <th>Address</th>
+        <th>Price</th>
+        <th>Shipping fee</th>
+        <th>Total Price</th>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+        <td>@order.Id</td>
+        <td>@order.Cake.Name</td>
+        <td>@order.CustomerAddress</td>
+        <td>@order.Cake.Price lv</td>
+        <td>@order.ShippingFee lv</td>
+        <td>@order.TotalPrice lv</td>
+        }
+    </tbody>
+</table>

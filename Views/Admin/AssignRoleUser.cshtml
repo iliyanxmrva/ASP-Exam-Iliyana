@@ -1,0 +1,24 @@
+﻿@using asp_exam_iliyana.Models.ViewModels
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Users";
+}
+<h3>Assign Role</h3>
+<br />
+
+<form method="post" asp-action="AsignRoleUser" asp-roue-userId="@Model.Id">
+    @foreach (var role in Model.AllRoles)
+    {
+        <div class="form-check">
+            <label class="custom-checkbox">
+                <input type="checkbox" value="@role">
+                <span for="role_@role" class="checkmark"></span>
+                @role
+            </label>
+        </div>
+    }
+    <div>
+        <button type="button" class="btn btn-primary">Save</button>
+    </div>
+</form>

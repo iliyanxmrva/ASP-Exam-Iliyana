@@ -1,0 +1,50 @@
+﻿@model List<Cake>;
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Cakes";
+}
+
+<nav class="navbar bg-body-tertiary d-flex justify-content-center">
+    <form>
+        <a asp-action="AddCake" class="btn btn-sm btn-outline-primary">Add New Cake</a>
+        <a asp-action="AddCakeFillings" class="btn btn-sm btn-outline-primary">Add New Cake Filling</a>
+    </form>
+</nav>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>Filling</th>
+            <th>Price</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cake in Model)
+        {
+            <tr>
+                <td>
+                    <img src="~/images/cakes/@cake.ImageUrl" style="width: 60px !important;" />
+                </td>
+                <td>
+                    @cake.Name
+                </td>
+                <td>
+                    @cake.Filling
+                </td>
+                <td>
+                    @cake.Price
+                </td>
+                <td>
+                    <div>
+                        <a asp-action="EditCake" asp-route-id="@cake.Id" class="btn btn-secondary btn-sm">Edit</a>
+                        <a asp-action="DeleteCake" asp-route-id="@cake.Id" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure?')">Delete</a>
+                    </div>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

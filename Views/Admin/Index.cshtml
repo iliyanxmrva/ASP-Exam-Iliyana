@@ -1,0 +1,17 @@
+﻿@model List<int>
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Index";
+}
+
+<h3>Admin Index Page</h3>
+<br />
+<div class="d-flex justify-content-evenly">
+    <button type="button" class="btn btn-primary">
+        Total Cakes: <span class="badge text-bg-secondary">@Model[0]</span>
+    </button>
+    
+    <button type="button" class="btn btn-primary">
+        Total Users: <span class="badge text-bg-secondary">@Model[1]</span>
+    </button>
+</div>

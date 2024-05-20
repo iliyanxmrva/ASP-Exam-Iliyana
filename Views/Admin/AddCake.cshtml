@@ -1,0 +1,54 @@
+﻿@inject asp_exam_iliyana.Services.Interfaces.ICakeService cakeService
+@model Cake
+
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Cakes";
+}
+
+<h3>Add New Cake</h3>
+<hr />
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddCake">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" style="margin-bottom: 10px">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-bottom: 10px">
+                <label asp-for="Filling"></label>
+                <select asp-for="Filling" class="form-select">
+                    @{
+                        List<CakeFilling> fillings = await cakeService.GetAllFillingsAsync();
+                    }
+                    @foreach (var filling in fillings)
+                    {
+                        <option>@filling.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group" style="margin-bottom: 10px">
+                <label asp-for="Description">Description</label>
+                <textarea asp-for="Description" class="form-control" placeholder="Leave a comment here"></textarea>
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="margin-bottom: 10px">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" type="number">
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="mb-3">
+                <label asp-for="ImageUrl" class="form-label">Choose an image</label>
+                <input asp-for="ImageUrl" class="form-control form-control-sm" type="file">
+            </div>
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary"
+            </div>
+        </form>
+    </div>
+</div>
